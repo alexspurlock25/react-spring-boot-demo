@@ -15,7 +15,7 @@ public class Counter {
     @Id @GeneratedValue Long id;
     private int counter;
 
-    public Counter(int start) {
-        this.counter = start;
+    public Counter() {
+        this.counter = 0;
     }
 }

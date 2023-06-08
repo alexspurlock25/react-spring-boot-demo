@@ -5,10 +5,8 @@ import java.util.List;
 import com.alexanderspurlock.backend.model.Counter;
 import com.alexanderspurlock.backend.service.CounterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.alexanderspurlock.backend.model.Employee;
 import com.alexanderspurlock.backend.service.EmployeeService;
@@ -35,4 +33,12 @@ public class MainController {
     public List<Counter> getAllCounters() {
         return this.counterService.getAll();
     }
+
+    @PostMapping("/counter")
+    public ResponseEntity<String> addCounter(@RequestBody Counter counter) {
+        System.out.println(counter);
+        this.counterService.add(counter);
+        return ResponseEntity.ok("Counter added.");
+    }
+
 }

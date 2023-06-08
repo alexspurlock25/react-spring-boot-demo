@@ -31,4 +31,9 @@ public class CounterService {
             throw new Exception("Counter doesn't exist.");
         return optional.get();
     }
+
+    public void add(Counter counter) {
+        counter.setCounter(0); // always start the counter with a 0
+        this.counterRepository.save(counter);
+    }
 }
