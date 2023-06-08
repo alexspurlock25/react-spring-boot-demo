@@ -22,10 +22,27 @@ public class EmployeeService {
             employees.add(employee)
         );
         
-        return employees;
+        return getTestEmployees();
     }
 
     public void add(Employee employee) {
         this.employeeRepository.save(employee);
+    }
+
+    private List<Employee> getTestEmployees() {
+        List<Employee> test = new ArrayList<>();
+
+        Employee one = new Employee();
+        one.setId(1l);
+        one.setName("Alex");
+
+        Employee two = new Employee();
+        two.setId(2l);
+        two.setName("Sasha");
+
+        test.add(one);
+        test.add(two);
+        
+        return test;
     }
 }
