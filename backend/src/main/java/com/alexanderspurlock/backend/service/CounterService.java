@@ -1,0 +1,34 @@
+package com.alexanderspurlock.backend.service;
+
+import com.alexanderspurlock.backend.model.Counter;
+import com.alexanderspurlock.backend.repository.CounterRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class CounterService {
+    private final CounterRepository counterRepository;
+
+    @Autowired
+    public CounterService(CounterRepository counterRepository) {
+        this.counterRepository = counterRepository;
+    }
+
+    public List<Counter> getAll() {
+        List<Counter> counters = new ArrayList<>();
+        this.counterRepository.findAll().forEach(counter -> counters.add(counter));
+        return counters;
+    }
+
+    public Counter getCounterById(Long id) throws Exception {
+        Optional<Counter> optional = this.counterRepository.findById(id);
+
+        if (!optional.isPresent())
+            throw new Exception("Counter doesn't exist.");
+        return optional.get();
+    }
+}
