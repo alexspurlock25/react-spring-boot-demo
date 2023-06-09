@@ -6,12 +6,21 @@ import './App.css'
 function App() {
 	const [count, setCount] = useState(0)
 	const [employees, setEmployees] = useState([])
+	const [counters, setCounters] = useState([])
 
 	useEffect(() => {
-		fetch("http://localhost:8080/api/employees")
+		// fetch("http://localhost:8080/api/employees")
+		// 	.then(response => response.json())
+		// 	.then(data => setEmployees(data))
+
+		fetch("http://localhost:8080/api/counters")
 			.then(response => response.json())
-			.then(data => setEmployees(data))
+			.then(data => setCounters(data))
 	});
+
+	const increment = (counterId) => {
+		console.log(counterId)
+	}
 	
 
 	return (
@@ -26,9 +35,15 @@ function App() {
 			</div>
 			<h1>Vite + React</h1>
 			<div className="card">
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
+				<div>
+				{
+					counters.map(counter => (
+						<button key={counter.id} onClick={() => increment(counter.id)}>
+							count is {counter.counter}
+						</button>
+					))
+				}
+				</div>
 				<p>
 					Edit <code>src/App.jsx</code> and save to test HMR
 				</p>
@@ -36,14 +51,6 @@ function App() {
 			<p className="read-the-docs">
 				Click on the Vite and React logos to learn more
 			</p>
-			<div>
-				employees
-				{
-					employees.map(employee => (
-						<div key={employee.id}>{employee.name}</div>
-					))
-				}
-			</div>
 		</>
 	)
 }
