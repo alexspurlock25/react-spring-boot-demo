@@ -31,6 +31,20 @@ function App() {
 			}
 		)
 	}
+
+	const addCounter = () => {
+		fetch(
+			"http://localhost:8080/api/counter", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					counter: 0
+				})
+			}
+		)
+	}
 	
 
 	return (
@@ -45,6 +59,7 @@ function App() {
 			</div>
 			<h1>Vite + React</h1>
 			<div className="card">
+				<button onClick={addCounter}>Add Counter</button>
 				<div>
 				{
 					counters.map(counter => (
