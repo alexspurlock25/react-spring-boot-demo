@@ -15,5 +15,5 @@ This is assuming that you have Nodejs and JDK of some kind (this project uses 17
 
 This will be my boilerplate code for future full stack projects.
 
-#Screenshots
+# Screenshots
 ![Screenshots](screenshots/react_springboot.png)
