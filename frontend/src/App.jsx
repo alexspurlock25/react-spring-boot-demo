@@ -19,7 +19,17 @@ function App() {
 	});
 
 	const increment = (counterId) => {
-		console.log(counterId)
+		fetch(
+			`http://localhost:8080/api/counter/${counterId}/increment`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					id: counterId
+				})
+			}
+		)
 	}
 	
 

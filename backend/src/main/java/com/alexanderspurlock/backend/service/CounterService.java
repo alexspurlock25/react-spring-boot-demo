@@ -36,4 +36,19 @@ public class CounterService {
         counter.setCounter(0); // always start the counter with a 0
         this.counterRepository.save(counter);
     }
+
+    public void increment(Long counterId) throws Exception {
+        Optional<Counter> optional = this.counterRepository.findById(counterId);
+
+        if (optional.isPresent()) {
+            Counter counter = optional.get();
+
+            int currentCounter = counter.getCounter();
+            counter.setCounter(currentCounter + 1);
+
+            this.counterRepository.save(counter);
+        } else {
+            throw new Exception("Counter with given id is not present.");
+        }
+    }
 }
