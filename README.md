@@ -14,3 +14,6 @@ This is assuming that you have Nodejs and JDK of some kind (this project uses 17
 3. Go to the brower, and go to `http://localhost:5173/`.
 
 This will be my boilerplate code for future full stack projects.
+
+#Screenshots
+![Screenshots](screenshots/react_springboot.png)
